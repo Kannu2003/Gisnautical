@@ -1,0 +1,42 @@
+import geopandas as gpd
+import matplotlib.pyplot as plt
+import pyproj
+
+# Read a maritime-related shapefile (e.g., maritime boundaries, ports, shipping routes)
+shapefile_path = 'path/to/your/maritime_shapefile.shp'
+gdf = gpd.read_file(shapefile_path)
+
+# Print basic information about the data
+print("Number of rows:", len(gdf))
+print("Data columns:", gdf.columns)
+print("Coordinate Reference System (CRS):", gdf.crs)
+
+# Plot the data
+gdf.plot()
+plt.title("Maritime Spatial Data")
+plt.xlabel("Longitude")
+plt.ylabel("Latitude")
+plt.show()
+
+# Perform spatial operations (e.g., buffer)
+buffered_gdf = gdf.buffer(5000)  # Buffer the maritime features by 5000 meters
+
+# Save the result to a new shapefile
+output_path = 'path/to/your/output_shapefile.shp'
+buffered_gdf.to_file(output_path)
+
+# Reproject the data to a different CRS (e.g., from WGS 84 to UTM Zone 33N)
+utm_crs = pyproj.CRS("EPSG:32633")
+gdf_utm = gdf.to_crs(utm_crs)
+
+# Perform spatial analysis (e.g., find centroid of features)
+centroids = gdf_utm.centroid
+
+# Plot the centroids on the UTM map
+gdf_utm.plot()
+centroids.plot(color='red', markersize=50)
+plt.title("Maritime Spatial Data with Centroids")
+plt.xlabel("Easting (meters)")
+plt.ylabel("Northing (meters)")
+plt.show()
+￼Enter
