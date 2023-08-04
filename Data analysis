@@ -1,0 +1,31 @@
+#data analysis
+# Example 1: Calculate mean, median, and standard deviation of a column
+mean_value = data['column_name'].mean()
+median_value = data['column_name'].median()
+std_deviation = data['column_name'].std()
+
+# Example 2: Grouping and aggregation
+grouped_data = data.groupby('category_column')['numeric_column'].mean()
+
+# Example 3: Correlation analysis
+correlation_matrix = data.corr()
+
+# Advanced data analysis (if required)
+# Example: Linear regression
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+X = data['column_name'].values.reshape(-1, 1)
+y = data['target_column'].values
+model.fit(X, y)
+predicted_values = model.predict(X)
+
+# Data visualization (advanced)
+# Example: Visualizing the linear regression model
+plt.figure()
+plt.scatter(X, y, label='Actual Data')
+plt.plot(X, predicted_values, color='red', label='Linear Regression Model')
+plt.xlabel('Column Name')
+plt.ylabel('Target Column')
+plt.title('Linear Regression')
+plt.legend()
+plt.show()￼Enter
