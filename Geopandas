@@ -1,0 +1,21 @@
+import geopandas as gpd
+
+# Read a shapefile (you can replace this with your own GIS data file)
+shapefile_path = 'path/to/your/shapefile.shp'
+gdf = gpd.read_file(shapefile_path)
+
+# Print basic information about the data
+print("Number of rows:", len(gdf))
+print("Data columns:", gdf.columns)
+print("Coordinate Reference System (CRS):", gdf.crs)
+
+# Perform spatial operations, e.g., finding intersections
+intersections = gdf.geometry.buffer(100).unary_union
+
+# Save the result to a new shapefile
+output_path = 'path/to/your/output_shapefile.shp'
+gpd.GeoSeries(intersections).to_file(output_path)
+
+# Plot the data (you can use libraries like matplotlib or seaborn for visualization)
+gdf.plot()
+
