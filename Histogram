@@ -1,0 +1,24 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the data into a DataFrame (you can replace 'data.csv' with your own dataset)
+data = pd.read_csv('data.csv')
+
+# Basic data exploration
+print("Data shape:", data.shape)
+print("Columns:", data.columns)
+print("Data summary:", data.describe())
+
+# Data cleaning (if required)
+# data.dropna(inplace=True)
+
+# Data visualization
+# Example 1: Histogram
+plt.figure()
+plt.hist(data['column_name'], bins=20)
+plt.xlabel('Column Name')
+plt.ylabel('Frequency')
+plt.title('Histogram of Column Name')
+plt.show()
