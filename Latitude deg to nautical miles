@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class LatitudeToNauticalMiles {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the latitude in degrees: ");
+        double latitudeDegrees = scanner.nextDouble();
+
+        double nauticalMiles = latitudeToNauticalMiles(latitudeDegrees);
+        System.out.println("Latitude " + latitudeDegrees + " degrees is approximately " + nauticalMiles + " nautical miles.");
+    }
+
+    public static double latitudeToNauticalMiles(double latitudeDegrees) {
+        final double nauticalMilesPerDegreeAtEquator = 60.0;
+        double nauticalMiles = nauticalMilesPerDegreeAtEquator * latitudeDegrees;
+        return nauticalMiles;
+    }
+}
+￼Enter
